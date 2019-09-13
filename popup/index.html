@@ -21,9 +21,9 @@
 <header>
     <section class="background">
         <div id="babush">
-            <img src="logo/logo.svg" alt="img">
+            <a href="index.html#grid"><img src="logo/logoforreal.png" alt="img"></a>
         </div>
-        <div id="overskrift">Seriemordere</div>
+
     </section>
 </header>
 
@@ -44,16 +44,18 @@
 <body>
 
     <template>
-        <article class="grid">
-            <img class="hove" src="" alt="">
+        <section id="grid">
+            <article class="grid">
+                <img class="hove" src="" alt="">
 
-            <h2></h2>
-            <h3 class="kort">Antal drab: </h3>
-            <p class="alder"></p>
+                <h2></h2>
+                <h3 class="kort">Antal drab: </h3>
+                <p class="alder"></p>
 
 
 
-        </article>
+            </article>
+        </section>
     </template>
 
     <div id="popup">
@@ -64,7 +66,7 @@
                 <img class="billedeo" src="" alt="">
                 <p class="alder"></p>
                 <p class="landogby"></p>
-                <p class="aktiveaar">Aktiv periode: </p>
+                <p class="aktiveaar"></p>
                 <p class="kort"></p>
             </article>
 
@@ -76,8 +78,9 @@
     <section class="personliste"></section>
 
     <footer>
-
+        <p>&copy; 2019 Seriemordere</p>
     </footer>
+
     <script>
         document.addEventListener("DOMContentLoaded", getjson);
         const modtagerKloner = document.querySelector(".personliste");
@@ -126,7 +129,7 @@
             document.querySelector(".enkeltPerson .kort").textContent = person.gsx$beskrivelse.$t;
             document.querySelector(".enkeltPerson .landogby").textContent = person.gsx$landogby.$t;
             document.querySelector(".enkeltPerson .alder").textContent = person.gsx$alder.$t;
-            document.querySelector(".enkeltPerson .aktiveaar").textContent += person.gsx$aktiveaar.$t;
+            document.querySelector(".enkeltPerson .aktiveaar").textContent = person.gsx$aktiveaar.$t;
 
 
         }

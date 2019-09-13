@@ -1,5 +1,5 @@
 img {
-    width: 50%;
+    width: 100%;
 
 }
 
@@ -167,21 +167,19 @@ article:nth-child(odd) {
     }
 
     .background {
-/*        background-color: black;*/
-        height: 20vw;
+        /*        background-color: black;*/
+        height: 15vw;
 
     }
 
-    footer {
-        background: rgba(123, 123, 123, 0.53);
-    }
+
 
     #babush {
         position: absolute;
-        width: 30vw;
-        height: 30vh;
-        top: 1vw;
-        left: 41.8vw;
+        width: 20vw;
+        height: 20vh;
+        top: 3vw;
+        left: 40.5vw;
     }
 
 
