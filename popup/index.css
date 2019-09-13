@@ -1,0 +1,198 @@
+img {
+    width: 50%;
+}
+
+.billedeo {
+    width: 30%
+}
+
+.personliste {
+    text-align: center;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(1, 1fr);
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.grid {
+    height: 100%;
+
+    transition: transform .8s;
+
+
+
+}
+
+article:nth-child(even) {
+    /*background: rgba(119, 114, 114, 0.27);*/
+}
+
+article:nth-child(odd) {
+    background: #ffffff;
+}
+
+
+
+.grid:hover {
+    transform: scale(0.5);
+    /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+
+
+@media screen and (min-width:600px) {
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+    .personliste {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(2, 1fr)
+    }
+
+
+
+
+
+
+    @media screen and (min-width:768px) {
+        .grid {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .personliste {
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: repeat(3, 1fr)
+        }
+    }
+
+
+    nav {
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        border:
+    }
+
+
+
+    .filter {
+        display: flex;
+        justify-content: center;
+        margin: 2%;
+        height: 30px;
+        width: 150px;
+    }
+
+
+
+
+    .filter:hover {
+        opacity: 0.5;
+    }
+
+    .valgt {
+        background-color: black;
+    }
+
+    h1 {
+        display: flex;
+        justify-content: center;
+        color: rgb(150, 22, 22);
+        font-family: 'Permanent Marker', cursive;
+    }
+
+    h2 {
+        font-family: 'Permanent Marker', cursive;
+    }
+
+    h3 {
+        font-family: 'Yeon Sung', cursive;
+    }
+
+    p {
+        /*        font-family: 'Caveat', cursive;*/
+        font-family: 'Yeon Sung', cursive;
+
+    }
+
+    #popup {
+        position: fixed;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(255, 3, 3, 0.44);
+        display: none;
+    }
+
+    .indhold {
+        width: 70vw;
+        min-height: 50vh;
+        background: #fff;
+        margin: 4rem auto;
+        padding: 10px;
+    }
+
+    .luk {
+        position: fixed;
+        right: 0;
+        font-size: 2rem;
+    }
+
+    #overskrift {
+        display: flex;
+        justify-content: center;
+        font-size: 6vw;
+        font-family: 'Permanent Marker', cursive;
+        color: rgba(255, 0, 0, 0.39);
+        padding: 4vw;
+        padding-left: 0vw;
+    }
+
+    .background {
+        background-color: black;
+        height: 15vw;
+
+    }
+
+    footer {
+        background: rgba(123, 123, 123, 0.53);
+    }
+
+    #babush {
+        position: absolute;
+        width: 20vw;
+        height: 20vh;
+        top: 1vw;
+        left: 1vw;
+    }
+
+
+    button {
+
+        display: inline-block;
+        padding: 0.3em 1.2em;
+        margin: 0 0.3em 0.3em 0;
+        border-radius: 2em;
+        box-sizing: border-box;
+        text-decoration: none;
+        font-family: 'Yeon Sung', cursive;
+        font-weight: 400;
+        font-size: 1rem;
+        color: #FFFFFF;
+        background-color: #be1212;
+        text-align: center;
+        transition: all 0.2s;
+
+    }
+
+    .line {
+        border-top: 1px solid black;
+    }
