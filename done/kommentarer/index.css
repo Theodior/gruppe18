@@ -1,0 +1,543 @@
+/*Universel 100% bredde tag til alle billeder +dotted border til mobile*/
+img {
+    width: 100%;
+    border-bottom: dotted black;
+}
+
+/*CSS til pop-up mobile version. Position: absolute gør at vi kan flytte billedelementet relativt til det normale input*/
+.billedeo {
+    position: absolute;
+    width: 55vw;
+    top: 6vw;
+    left: 22vw
+}
+
+/*Animationslængde til grid billeder på landingpage*/
+.hove {
+    transition: transform 1s;
+}
+
+/*Selve animationen til billederne på landingpage*/
+.hove:hover {
+    transform: scale(1.2);
+    /* kode er taget fra W3Schools https://www.w3schools.com/howto/howto_css_zoom_hover.asp*/
+    opacity: 0.5;
+    filter: alpha(opacity=100);
+}
+
+
+/*Laver vores grid til landingpage, så vi får 3 horizontale billeder i desktop - falder til 2 i tablet og 1 i mobile + at grid gentager sig selv iform af det input der kommer fra googlesheetet*/
+.personliste {
+    text-align: center;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(1, 1fr);
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+/*Laver pointer når man hover og billeder, hvilket indikerer at man kan klikke*/
+.grid {
+    height: 100%;
+
+    cursor: pointer;
+
+
+
+}
+
+/*laver de grids med lige tal grå*/
+article:nth-child(even) {
+    /*background: rgba(119, 114, 114, 0.27);*/
+}
+
+/*laver de grids med ulige tal hvide*/
+article:nth-child(odd) {
+    background: #ffffff;
+}
+
+
+/*Flexer vores menu/nav så vores filtreringsknapper står ved siden af hinandnen*/
+nav {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    border:
+}
+
+
+/*Flexer vores menu/nav så vores filtreringsknapper står ved siden af hinandnen*/
+.filter {
+    display: flex;
+    justify-content: center;
+    margin: 2%;
+    height: 30px;
+    width: 150px;
+}
+
+
+
+/*Indikerer at du hover over en knap på filter der kan trykkes på*/
+.filter:hover {
+    opacity: 0.5;
+}
+
+/*Skifter farven på den valgte filtreringsknap til sort*/
+.valgt {
+    background-color: black;
+}
+
+/*Giver farve og font til h1, som fortæller hvilket filter du er på + centrere overskriften til at stå midt på siden*/
+h1 {
+    display: flex;
+    justify-content: center;
+    color: rgb(150, 22, 22);
+    font-family: 'Permanent Marker', cursive;
+}
+
+/*Ændrer fonten på alle h2*/
+h2 {
+    font-family: 'Permanent Marker', cursive;
+}
+
+/*Ændrer fonten på alle h3*/
+h3 {
+    font-family: 'Yeon Sung', cursive;
+}
+
+/*Ændrer fonten på alle p-tags*/
+p {
+    /*        font-family: 'Caveat', cursive;*/
+    font-family: 'Yeon Sung', cursive;
+
+}
+
+/*Laver pop-up vinduet men laver en display none, så den først åbner ved et klik*/
+#popup {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 200vh;
+    background: rgba(255, 3, 3, 0.44);
+    display: none;
+
+}
+
+
+/*Laver grid i pop-up vinduet så vi får billede til venstre og tekst til højre*/
+.popupcontainer {
+    height: 95vw;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+
+
+}
+
+/*Laver grid til billede i venstre side i pop-up vindue*/
+.left {
+    display: grid;
+    grid-row: 1/ span 1;
+
+
+}
+
+
+/*Laver grid til tekst i højre side af pop-up vinduet*/
+.rigth {
+
+    display: grid;
+    overflow: scroll;
+    width: 63vw;
+
+    margin-left: 8vw;
+
+    margin-top: 0;
+
+    top: 59vw
+}
+
+/*Scroll bar fundet på W3Schools https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp*/
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+
+}
+
+/*Opsætter størrelser for elementer i pop-up vinduet*/
+.indhold {
+    width: 70vw;
+    min-height: 50vh;
+    background: #fff;
+    margin: 4rem auto;
+    padding: 10px;
+}
+
+/*positionerer luk-knappen*/
+.luk {
+    position: fixed;
+    right: 0;
+    font-size: 2rem;
+}
+
+
+/*Laver højden for baggrunden til top element, hvor logoet skal være.*/
+.background {
+    /*        background-color: black;*/
+    height: 20vw;
+
+}
+
+
+/*Indsætter størrelser for logoet og positionere det*/
+#babush {
+    position: absolute;
+    width: 20vw;
+    height: 20vh;
+    top: 5.5vw;
+    left: 40vw;
+}
+
+/*Styler knapperne *Filtreringsknapper + luk-knap i pop-up* */
+button {
+    display: inline-block;
+    padding: 0.3em 1.2em;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 2em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: 900;
+    color: #FFFFFF;
+    background-color: #be1212;
+    text-align: center;
+    transition: all 0.2s;
+
+}
+
+/*laver splitlinje fra top element og inholdselement i bunden*/
+.line {
+    border-top: 1px solid black;
+}
+
+/*Laver indholdet til mobile og tablet version*/
+@media screen and (min-width:600px) {
+
+    /*Laver grid til en af gangen i mobil*/
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+    /*Laver grid til en af gangen i mobil*/
+    .personliste {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(2, 1fr)
+    }
+
+    /*styler pop-up vinduet og display none for at man skal klikke det frem*/
+    #popup {
+        position: fixed;
+        top: 0;
+        width: 100vw;
+        height: 200vh;
+        background: rgba(255, 3, 3, 0.44);
+        display: none;
+
+    }
+
+    /*Lav pop-up vinduet i en køre så man får et rent design*/
+    .popupcontainer {
+        height: 95vw;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+
+
+    }
+
+    /*Positionerer billedet */
+    .billedeo {
+        position: absolute;
+        width: 52vw;
+        top: 7vw;
+        left: 25vw;
+    }
+
+
+    /*Positionerer tekst under billedet*/
+    .rigth {
+
+        grid-row: 2/ span 1;
+        display: grid;
+        overflow: scroll;
+        width: 60vw;
+
+        margin-left: 10vw;
+
+        margin-top: 0;
+
+        top: 55vw
+    }
+
+    /*Fjerner dotted border i pop-up version*/
+    img {
+        border-bottom: inherit;
+    }
+
+    /*Indsat scrollbar fra W3schools*/
+    /* width */
+    ::-webkit-scrollbar {
+        width: 10px;
+        margin: 10px;
+
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+
+    }
+
+}
+
+/*Mediaquerry til desktopversion*/
+@media screen and (min-width:700px) {
+
+    /*Laver grid til 3 horizontale elementer + og repeater det alt indenfor det antal indholdselementer der er i googlesheetet*/
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 960px;
+        margin: 0 auto;
+    }
+
+    /*Laver grid-gap*/
+    .personliste {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(3, 1fr)
+    }
+
+    /*Positionere pop-upvinduet*/
+    #popup {
+        position: fixed;
+        top: 0;
+        width: 100vw;
+        height: 80vw;
+        background: rgba(255, 3, 3, 0.44);
+        display: none;
+
+
+    }
+
+    /*Laver vores grid til pop-up*/
+    .popupcontainer {
+
+        display: grid;
+        height: 40vw;
+        grid-gap: 5px;
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+    /*positionerer billedet i venstre side af pop-up vinduet*/
+    .left {
+        display: grid;
+        grid-column: 1/ span 1;
+
+    }
+
+    /*positionerer teksten i venstre side af pop-up vinduet*/
+    .rigth {
+        display: grid;
+
+        grid-column: 2/ span 3;
+        grid-row: 1/ span 3;
+
+        overflow: scroll;
+        width: 30vw;
+        height: 30vw;
+        margin-left: 0;
+        margin-top: 40px;
+
+
+
+
+    }
+
+    /*fjerner positionen fra mobilet/tablet versionen på desktop version*/
+    .billedeo {
+
+
+        width: 100%;
+        position: inherit;
+    }
+
+    /*Størrelsesforhold til indholdet i pop-up vinduet*/
+    .indhold {
+        width: 70vw;
+        min-height: 50vh;
+        background: #fff;
+        margin: 4rem auto;
+        padding: 10px;
+    }
+
+    /*fjerner dotted border på desktop version*/
+    img {
+        border-bottom: inherit;
+    }
+
+}
+
+/*Giver font til vores indhold i popup*/
+.indhold .alder {
+    font-family: 'Permanent Marker', cursive;
+}
+
+.indhold .landogby {
+    font-family: 'Permanent Marker', cursive;
+}
+
+.indhold .aktiveaar {
+    font-family: 'Permanent Marker', cursive;
+}
+
+#popup img {
+    border-bottom: inherit;
+}
+
+/*Footer*/
+
+
+/*fontsize og family til footer*/
+html {
+    font-size: 0.625rem;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+}
+
+/*presser diven længde ud til hele htmlbredden*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/*fjerner border og tekstdekorationer*/
+a {
+    text-decoration: none;
+    font-size: 2rem;
+    color: #000000;
+}
+
+/** FOOTER CSS **/
+
+.up img {
+    color: white;
+    height: 40px;
+    position: absolute;
+    left: 12px;
+    top: 5px;
+    width: 25px;
+    margin: auto;
+}
+
+/*sætter tekst i center og baggrunden på div'en hvid*/
+.copyright {
+    width: 100%;
+    text-align: center;
+    background-color: white;
+    padding: 2rem 0;
+
+    /*Gør at footer er fastlåst på siden, og man hele tiden kan se den*/
+    position: fixed;
+    margin-top: 10rem;
+    bottom: -10px;
+
+
+}
+
+
+
+/*positionerer arrow img på to top button*/
+.up img {
+    color: white;
+    height: 40px;
+    position: absolute;
+    left: 7.5px;
+    top: -1px;
+    width: 25px;
+    margin: auto;
+}
+
+/*fontstørrelse på footer*/
+.copyright p {
+    font-size: 1.4rem;
+}
+
+/*Centrerer tekst i footer*/
+.fl3x {
+    display: flex;
+    justify-content: center;
+}
+
+/*laver margin så man kan læse footer*/
+.fl3x p {
+    margin: 10px;
+}
+
+/** FOOTER ANIMATION CSS **/
+
+.up {
+    /*position: absolut; Et element med position: absolut; er placeret i forhold til nærmeste placerede forfader (i stedet for placeret i forhold til visningsporten, som fast). Imidlertid; Hvis et absolut positioneret element ikke har nogen positionerede forfædre, bruger det dokumentets krop og bevæger sig sammen med siderulle.*/
+    position: absolute;
+    width: 4rem;
+    height: 4rem;
+    background-color: #eee;
+    top: -1.5rem;
+    right: 5rem;
+    border-radius: 100%;
+    display: flex;
+    animation: beating 2s infinite;
+
+}
+
+/*Animationen vokser i farve fra 0% -> 70% -> 100%*/
+
+@keyframes beating {
+    0% {
+        box-shadow: 0 0 0 0 rgba(150, 22, 22, 0.82);
+    }
+
+    70% {
+        box-shadow: 0 0 0 2rem rgba(253, 87, 191, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(253, 87, 191, 0);
+    }
+}
+
+
+/** FOOTER CSS SLUT **/
+
+/*laver en div bund så man kan læse de nederte seriemorderes beskrivelser*/
+.white {
+    height: 10vw;
+
+}

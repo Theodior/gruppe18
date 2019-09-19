@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Caveat&display=swap" rel="stylesheet">
+
+
+
+
+
+</head>
+
+
+
+<header>
+    <section class="background">
+        <div id="babush">
+            <a href="index.html"><img src="logo/logoforreal.png" alt="img"></a>
+        </div>
+
+    </section>
+</header>
+
+
+<nav>
+    <button class="filter valgt" data-kills="alle">Alle</button>
+    <button class="filter" data-kills="a">Under 10 drab</button>
+    <button class="filter" data-kills="b">11 - 20 drab</button>
+    <button class="filter" data-kills="c">De hårde drenge</button>
+
+
+</nav>
+
+<div class="line"></div>
+
+<h1>Alle</h1>
+
+<body id="landing">
+
+    <template>
+        <section id="grid">
+            <article class="grid">
+                <img class="hove" src="" alt="">
+
+                <h2></h2>
+                <h3 class="kort">Antal drab: </h3>
+                <p class="alder"></p>
+
+
+
+            </article>
+        </section>
+    </template>
+
+    <div id="popup">
+        <button class="luk">X</button>
+        <section class="indhold">
+            <article class="enkeltPerson">
+                <h2></h2>
+                <div class="popupcontainer">
+                    <div class="left">
+                        <img class="billedeo" src="" alt="">
+                    </div>
+
+
+                    <div class="rigth">
+                        <p class="alder"></p>
+                        <p class="landogby"></p>
+                        <p class="aktiveaar"></p>
+
+
+
+                        <p class="kort"></p>
+
+                    </div>
+                </div>
+
+            </article>
+        </section>
+    </div>
+
+
+
+
+
+    <section class="personliste"></section>
+
+    <div class="white"></div>
+    <footer class="copyright">
+        <div class="up">
+            <a href="index.html#landing"><img src="arrow-up.svg" alt="arrow"></a>
+        </div>
+        <div class="fl3x">
+            <p>&copy; 2019 Seriemordere</p>
+            <p>Adresse: West Yorkshire, England </p>
+            <p> Tlf: +45 37 87 39</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", getjson);
+        const modtagerKloner = document.querySelector(".personliste");
+        const temp = document.querySelector("template");
+        let personer;
+        let filter = "alle";
+        async function getjson() {
+            let jsondata = await fetch("https://spreadsheets.google.com/feeds/list/1jED7Gxj0kUf4edsTbHFToKvIQwTX1679eh3c_J8g7NA/od6/public/values?alt=json");
+            console.log("jsondata", jsondata);
+            minJson = await jsondata.json();
+            visJson();
+            addEventListenersToButtons();
+        }
+
+        function visJson() {
+            modtagerKloner.innerHTML = "";
+            minJson.feed.entry.forEach((person) => {
+                if (filter == "alle" || filter == person.gsx$kills.$t) {
+                    const klon = temp.cloneNode(true).content;
+                    klon.querySelector("h2").textContent = person.gsx$navn.$t;
+                    klon.querySelector(".kort").textContent += person.gsx$drabstal.$t;
+                    klon.querySelector("img").src = person.gsx$billede.$t;
+                    klon.querySelector(".alder").textContent += person.gsx$kendetegn.$t;
+                    modtagerKloner.appendChild(klon);
+                    modtagerKloner.lastElementChild.addEventListener("click", () => {
+                        visSingle(person)
+                    });
+                }
+            })
+        }
+
+        function visSingle(person) {
+            document.querySelector("#popup").style.display = "block";
+            document.querySelector("#popup .luk").addEventListener("click", lukSingle);
+
+            document.querySelector(".enkeltPerson .billedeo").src = person.gsx$billede.$t;
+            document.querySelector(".enkeltPerson .kort").textContent = person.gsx$beskrivelse.$t;
+            document.querySelector(".enkeltPerson .landogby").textContent = person.gsx$landogby.$t;
+            document.querySelector(".enkeltPerson .alder").textContent = person.gsx$alder.$t;
+            document.querySelector(".enkeltPerson .aktiveaar").textContent = person.gsx$aktiveaar.$t;
+        }
+
+        function lukSingle() {
+            document.querySelector("#popup").style.display = "none";
+        }
+
+        function addEventListenersToButtons() {
+            document.querySelectorAll(".filter").forEach(elm => {
+                elm.addEventListener("click", filtrering);
+            })
+        }
+
+        function filtrering() {
+            filter = this.dataset.kills;
+            document.querySelector("h1").textContent = this.textContent;
+            document.querySelectorAll(".filter").forEach(elm => {
+                elm.classList.remove("valgt");
+            })
+            this.classList.add("valgt");
+            visJson();
+        }
+    </script>
+</body></html>

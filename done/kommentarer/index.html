@@ -41,7 +41,7 @@
 
 <h1>Alle</h1>
 
-<body>
+<body id="landing">
 
     <template>
         <section id="grid">
@@ -57,7 +57,7 @@
             </article>
         </section>
     </template>
-
+    <section class="personliste"></section>
     <div id="popup">
         <button class="luk">X</button>
         <section class="indhold">
@@ -87,32 +87,44 @@
 
 
 
-
-
-    <section class="personliste"></section>
-
-    <footer class="gooter">
-        <p>&copy; 2019 Seriemordere </p>
-        <p>Adresse: West Yorkshire, England </p>
-        <p> Tlf: +45 37 87 39</p>
-
+    <div class="white"></div>
+    <footer class="copyright">
+        <div class="up">
+            <a href="index.html#landing"><img src="arrow-up.svg" alt="arrow"></a>
+        </div>
+        <div class="fl3x">
+            <p>&copy; 2019 Seriemordere</p>
+            <p>Adresse: West Yorkshire, England </p>
+            <p> Tlf: +45 37 87 39</p>
+        </div>
     </footer>
-
     <script>
+        /*Henter vores JSON data*/
         document.addEventListener("DOMContentLoaded", getjson);
+        /*Varibler med konstant værdi*/
         const modtagerKloner = document.querySelector(".personliste");
         const temp = document.querySelector("template");
+
+        /* Vores variabler */
         let personer;
         let filter = "alle";
+
+        /*JSON*/
         async function getjson() {
             let jsondata = await fetch("https://spreadsheets.google.com/feeds/list/1jED7Gxj0kUf4edsTbHFToKvIQwTX1679eh3c_J8g7NA/od6/public/values?alt=json");
             console.log("jsondata", jsondata);
             minJson = await jsondata.json();
+            /*Kalder vores function visJson*/
             visJson();
+            /*Kalder function der får knapperne/filtering til virker*/
             addEventListenersToButtons();
         }
 
+
+        /* Vores function som viser forside*/
+
         function visJson() {
+
             modtagerKloner.innerHTML = "";
             minJson.feed.entry.forEach((person) => {
                 if (filter == "alle" || filter == person.gsx$kills.$t) {
@@ -120,9 +132,10 @@
                     klon.querySelector("h2").textContent = person.gsx$navn.$t;
                     klon.querySelector(".kort").textContent += person.gsx$drabstal.$t;
                     klon.querySelector("img").src = person.gsx$billede.$t;
-
                     klon.querySelector(".alder").textContent += person.gsx$kendetegn.$t;
                     modtagerKloner.appendChild(klon);
+
+
                     modtagerKloner.lastElementChild.addEventListener("click", () => {
                         visSingle(person)
                     });
@@ -130,45 +143,33 @@
             })
         }
 
-
-
-
-
-
-
-
-
+        /* function der viser vores popup vindue*/
         function visSingle(person) {
             document.querySelector("#popup").style.display = "block";
             document.querySelector("#popup .luk").addEventListener("click", lukSingle);
-            document.querySelector(".enkeltPerson h2").textContent = person.gsx$navn.$t;
+
             document.querySelector(".enkeltPerson .billedeo").src = person.gsx$billede.$t;
             document.querySelector(".enkeltPerson .kort").textContent = person.gsx$beskrivelse.$t;
             document.querySelector(".enkeltPerson .landogby").textContent = person.gsx$landogby.$t;
             document.querySelector(".enkeltPerson .alder").textContent = person.gsx$alder.$t;
             document.querySelector(".enkeltPerson .aktiveaar").textContent = person.gsx$aktiveaar.$t;
-
-
         }
 
+
+        /*Luk function i vores popop vindue*/
         function lukSingle() {
             document.querySelector("#popup").style.display = "none";
         }
 
-
-
-
-
-
-
-
-
+        /* Kalder function filtrering og får knapper i filtrr til at virke*/
         function addEventListenersToButtons() {
             document.querySelectorAll(".filter").forEach(elm => {
                 elm.addEventListener("click", filtrering);
             })
         }
 
+
+        /*Gør så filtreringer fungerer*/
         function filtrering() {
             filter = this.dataset.kills;
             document.querySelector("h1").textContent = this.textContent;
@@ -180,6 +181,7 @@
         }
 
     </script>
+
 </body>
 
 </html>
